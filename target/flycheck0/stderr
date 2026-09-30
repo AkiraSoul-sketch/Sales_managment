@@ -1,1 +1,16 @@
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.12s
+    Updating crates.io index
+error: failed to select a version for `libsqlite3-sys`.
+    ... required by package `rusqlite v0.32.0`
+    ... which satisfies dependency `rusqlite = "^0.32"` of package `traits v0.260327.152038`
+    ... which satisfies dependency `traits = "^0.260327.152038"` of package `sales_management v0.1.0 (C:\Users\AKIRA\Documents\курсач\sales_management)`
+versions that meet the requirements `^0.30.0` are: 0.30.1, 0.30.0
+
+package `libsqlite3-sys` links to the native library `sqlite3`, but it conflicts with a previous package which links to `sqlite3` as well:
+package `libsqlite3-sys v0.38.2`
+    ... which satisfies dependency `libsqlite3-sys = "^0.38.1"` of package `rusqlite v0.40.2`
+    ... which satisfies dependency `rusqlite = "^0.40.2"` of package `sales_management v0.1.0 (C:\Users\AKIRA\Documents\курсач\sales_management)`
+note: only one package in the dependency graph may specify the same links value to ensure that only one copy of a native library is linked in the final binary
+for more information, see https://doc.rust-lang.org/cargo/reference/resolver.html#links
+help: try to adjust your dependencies so that only one package uses the `links = "sqlite3"` value
+
+failed to select a version for `libsqlite3-sys` which could resolve this conflict

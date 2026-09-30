@@ -1,4 +1,3 @@
-
-fn main() {
-    println!("Hello, world!");
-}
+mod contracts;
+mod contracts_impl;
+mod entities;
