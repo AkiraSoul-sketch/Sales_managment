@@ -2,8 +2,6 @@ use crate::entities::Department::Department;
 use uuid::Uuid;
 use std::future::Future;
 
-
-
 pub trait DepartmentStorage {
     fn add(&self, department: Department) ->
         impl Future<Output = Result<(), 
