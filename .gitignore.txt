@@ -1,0 +1,27 @@
+# Rust / Cargo
+/target/
+**/*.rs.bk
+*.pdb
+# Keep Cargo.lock committed for applications and backend services.
+# Cargo.lock
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+!.env.template
+# Local databases and generated database files
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+# Logs and runtime files
+*.log
+*.pid
+# IDEs and editors
+.vscode/
+.idea/
+*.iml
+*.swp
+*.swo
+.vsls.json

@@ -4,10 +4,11 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-traits = "0.260327.152038"
 
 [dependencies.uuid]
 version = "1.26.1"
+# Uuid::new_v4() для генерации идентификаторов сущностей.
+features = ["v4"]
 
 [dependencies.time]
 version = "0.3.55"
