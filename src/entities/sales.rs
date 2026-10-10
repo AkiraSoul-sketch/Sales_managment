@@ -13,8 +13,7 @@ pub struct Sales {
 }
 
 impl Sales {
-    /// Полный конструктор: все поля задаются явно.
-    /// Используется при чтении готовой записи из базы данных.
+
     pub fn create(
         id: Uuid,
         unit_id: Uuid,
@@ -31,8 +30,6 @@ impl Sales {
         }
     }
 
-    /// Создаёт продажу товара `product` подразделением `department`:
-    /// идентификатор и дата продажи генерируются автоматически.
     pub fn new(product: &Product, department: &Department, sold_items_count: i32) -> Self {
         Self::create(
             Uuid::new_v4(),

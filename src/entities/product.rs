@@ -15,8 +15,7 @@ pub struct Product {
 }
 
 impl Product {
-    /// Полный конструктор: все поля задаются явно.
-    /// Используется при чтении готовой записи из базы данных.
+
     pub fn create(
         item_number: Uuid,
         name: String,

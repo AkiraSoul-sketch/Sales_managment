@@ -16,12 +16,7 @@ pub struct Department {
 }
 
 impl Department {
-    /// Полный конструктор: все поля задаются явно.
-    /// Используется при чтении готовой записи из базы данных.
-    #[expect(
-        clippy::too_many_arguments,
-        reason = "конструктор повторяет состав таблицы department"
-    )]
+
     pub fn create(
         id: Uuid,
         name: String,
