@@ -1,16 +1,12 @@
-    Updating crates.io index
-error: failed to select a version for `libsqlite3-sys`.
-    ... required by package `rusqlite v0.32.0`
-    ... which satisfies dependency `rusqlite = "^0.32"` of package `traits v0.260327.152038`
-    ... which satisfies dependency `traits = "^0.260327.152038"` of package `sales_management v0.1.0 (C:\Users\AKIRA\Documents\курсач\sales_management)`
-versions that meet the requirements `^0.30.0` are: 0.30.1, 0.30.0
-
-package `libsqlite3-sys` links to the native library `sqlite3`, but it conflicts with a previous package which links to `sqlite3` as well:
-package `libsqlite3-sys v0.38.2`
-    ... which satisfies dependency `libsqlite3-sys = "^0.38.1"` of package `rusqlite v0.40.2`
-    ... which satisfies dependency `rusqlite = "^0.40.2"` of package `sales_management v0.1.0 (C:\Users\AKIRA\Documents\курсач\sales_management)`
-note: only one package in the dependency graph may specify the same links value to ensure that only one copy of a native library is linked in the final binary
-for more information, see https://doc.rust-lang.org/cargo/reference/resolver.html#links
-help: try to adjust your dependencies so that only one package uses the `links = "sqlite3"` value
-
-failed to select a version for `libsqlite3-sys` which could resolve this conflict
+   0.104721500s  INFO prepare_target{force=false package_id=sales_management v0.1.0 (C:\Users\AKIRA\Documents\курсач\sales_management) target="sales_management"}: cargo::core::compiler::fingerprint: stale: changed "C:\\Users\\AKIRA\\Documents\\курсач\\sales_management\\src\\main.rs"
+   0.104789300s  INFO prepare_target{force=false package_id=sales_management v0.1.0 (C:\Users\AKIRA\Documents\курсач\sales_management) target="sales_management"}: cargo::core::compiler::fingerprint:           (vs) "C:\\Users\\AKIRA\\Documents\\курсач\\sales_management\\target\\debug\\.fingerprint\\sales_management-515e9190b2b5d452\\dep-bin-sales_management"
+   0.104806100s  INFO prepare_target{force=false package_id=sales_management v0.1.0 (C:\Users\AKIRA\Documents\курсач\sales_management) target="sales_management"}: cargo::core::compiler::fingerprint:                FileTime { seconds: 13435640462, nanos: 369384800 } < FileTime { seconds: 13435654203, nanos: 823382900 }
+   0.105160700s  INFO prepare_target{force=false package_id=sales_management v0.1.0 (C:\Users\AKIRA\Documents\курсач\sales_management) target="sales_management"}: cargo::core::compiler::fingerprint: fingerprint dirty for sales_management v0.1.0 (C:\Users\AKIRA\Documents\курсач\sales_management)/Check { test: false }/TargetInner { name: "sales_management", doc: true, ..: with_path("C:\\Users\\AKIRA\\Documents\\курсач\\sales_management\\src\\main.rs", Edition2024) }
+   0.105221100s  INFO prepare_target{force=false package_id=sales_management v0.1.0 (C:\Users\AKIRA\Documents\курсач\sales_management) target="sales_management"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(StaleItem(ChangedFile { reference: "C:\\Users\\AKIRA\\Documents\\курсач\\sales_management\\target\\debug\\.fingerprint\\sales_management-515e9190b2b5d452\\dep-bin-sales_management", reference_mtime: FileTime { seconds: 13435640462, nanos: 369384800 }, stale: "C:\\Users\\AKIRA\\Documents\\курсач\\sales_management\\src\\main.rs", stale_mtime: FileTime { seconds: 13435654203, nanos: 823382900 } }))
+   0.126849100s  INFO prepare_target{force=false package_id=sales_management v0.1.0 (C:\Users\AKIRA\Documents\курсач\sales_management) target="sales_management"}: cargo::core::compiler::fingerprint: stale: changed "C:\\Users\\AKIRA\\Documents\\курсач\\sales_management\\src\\main.rs"
+   0.126881400s  INFO prepare_target{force=false package_id=sales_management v0.1.0 (C:\Users\AKIRA\Documents\курсач\sales_management) target="sales_management"}: cargo::core::compiler::fingerprint:           (vs) "C:\\Users\\AKIRA\\Documents\\курсач\\sales_management\\target\\debug\\.fingerprint\\sales_management-ef0307076bb8679d\\dep-test-bin-sales_management"
+   0.126891400s  INFO prepare_target{force=false package_id=sales_management v0.1.0 (C:\Users\AKIRA\Documents\курсач\sales_management) target="sales_management"}: cargo::core::compiler::fingerprint:                FileTime { seconds: 13435654196, nanos: 846442600 } < FileTime { seconds: 13435654203, nanos: 823382900 }
+   0.127029400s  INFO prepare_target{force=false package_id=sales_management v0.1.0 (C:\Users\AKIRA\Documents\курсач\sales_management) target="sales_management"}: cargo::core::compiler::fingerprint: fingerprint dirty for sales_management v0.1.0 (C:\Users\AKIRA\Documents\курсач\sales_management)/Check { test: true }/TargetInner { name: "sales_management", doc: true, ..: with_path("C:\\Users\\AKIRA\\Documents\\курсач\\sales_management\\src\\main.rs", Edition2024) }
+   0.127057000s  INFO prepare_target{force=false package_id=sales_management v0.1.0 (C:\Users\AKIRA\Documents\курсач\sales_management) target="sales_management"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(StaleItem(ChangedFile { reference: "C:\\Users\\AKIRA\\Documents\\курсач\\sales_management\\target\\debug\\.fingerprint\\sales_management-ef0307076bb8679d\\dep-test-bin-sales_management", reference_mtime: FileTime { seconds: 13435654196, nanos: 846442600 }, stale: "C:\\Users\\AKIRA\\Documents\\курсач\\sales_management\\src\\main.rs", stale_mtime: FileTime { seconds: 13435654203, nanos: 823382900 } }))
+    Checking sales_management v0.1.0 (C:\Users\AKIRA\Documents\курсач\sales_management)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.91s

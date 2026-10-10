@@ -1,6 +1,8 @@
 use time::UtcDateTime;
 use uuid::Uuid;
 
+/// Товар, продаваемый подразделением.
+#[derive(Debug, Clone)]
 pub struct Product {
     pub(crate) item_number: Uuid,
     pub(crate) name: String,
@@ -13,6 +15,8 @@ pub struct Product {
 }
 
 impl Product {
+    /// Полный конструктор: все поля задаются явно.
+    /// Используется при чтении готовой записи из базы данных.
     pub fn create(
         item_number: Uuid,
         name: String,
@@ -32,10 +36,17 @@ impl Product {
             deleted_at,
         }
     }
-}
 
-pub fn create_new() -> Self {
-    let item_number: Uuid = Uuid::new_v4();
-    let created_at: UtcDateTime = UtcDateTime::now();
-    Self::create(item_number, name, unit, price, created_at)
+    /// Создаёт новый товар: артикул и время создания генерируются автоматически.
+    pub fn new(name: String, unit: i32, price: f32) -> Self {
+        Self::create(
+            Uuid::new_v4(),
+            name,
+            unit,
+            price,
+            UtcDateTime::now(),
+            None,
+            None,
+        )
+    }
 }

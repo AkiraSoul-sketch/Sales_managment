@@ -1,6 +1,9 @@
+use crate::entities::{Department, Product};
 use time::UtcDateTime;
 use uuid::Uuid;
 
+/// Продажа: сколько единиц конкретного товара отдало подразделение.
+#[derive(Debug, Clone)]
 pub struct Sales {
     pub(crate) id: Uuid,
     pub(crate) unit_id: Uuid,
@@ -10,27 +13,33 @@ pub struct Sales {
 }
 
 impl Sales {
+    /// Полный конструктор: все поля задаются явно.
+    /// Используется при чтении готовой записи из базы данных.
     pub fn create(
         id: Uuid,
-        unit_id: &Product,
-        department_id: &Department,
+        unit_id: Uuid,
+        department_id: Uuid,
         sail_date: UtcDateTime,
         sold_items_count: i32,
     ) -> Self {
-        Sales {
+        Self {
             id,
             unit_id,
             department_id,
             sail_date,
             sold_items_count,
-        };
+        }
+    }
+
+    /// Создаёт продажу товара `product` подразделением `department`:
+    /// идентификатор и дата продажи генерируются автоматически.
+    pub fn new(product: &Product, department: &Department, sold_items_count: i32) -> Self {
+        Self::create(
+            Uuid::new_v4(),
+            product.item_number,
+            department.id,
+            UtcDateTime::now(),
+            sold_items_count,
+        )
     }
 }
-    pub fn create_new(product: &Product, department: &Department) -> Self {
-        let new_sales = Sales {
-            unit_id: &Product,
-            department_id: &Department,
-            sail_date: UtcDateTime::now(),
-            sold_items_count: 0,
-        };
-    }
