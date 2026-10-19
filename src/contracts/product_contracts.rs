@@ -17,9 +17,6 @@ pub trait ProductStorage {
         uuid: Uuid,
     ) -> impl Future<Output = Result<Option<Product>, Box<dyn std::error::Error>>>;
 
-    /// Возвращает все неудалённые товары.
-    fn list(&self) -> impl Future<Output = Result<Vec<Product>, Box<dyn std::error::Error>>>;
-
     /// Обновляет товар по артикулу.
     fn update(
         &self,

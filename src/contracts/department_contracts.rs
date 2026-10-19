@@ -19,9 +19,6 @@ pub trait DepartmentStorage {
         uuid: Uuid,
     ) -> impl Future<Output = Result<Option<Department>, Box<dyn std::error::Error>>>;
 
-    /// Возвращает все неудалённые подразделения.
-    fn list(&self) -> impl Future<Output = Result<Vec<Department>, Box<dyn std::error::Error>>>;
-
     /// Обновляет подразделение по идентификатору.
     fn update(
         &self,
