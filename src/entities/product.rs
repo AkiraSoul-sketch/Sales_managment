@@ -15,7 +15,6 @@ pub struct Product {
 }
 
 impl Product {
-
     pub fn create(
         item_number: Uuid,
         name: String,

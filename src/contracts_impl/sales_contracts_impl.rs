@@ -2,7 +2,7 @@ use std::path::PathBuf;
 
 use crate::contracts::sales_contract::SalesStorage;
 use crate::entities::Sales;
-use async_sqlite::{Pool, PoolBuilder};
+use async_sqlite::{Client, Pool, PoolBuilder};
 use rusqlite::types::Value;
 use rusqlite::{OptionalExtension, params_from_iter};
 use time::format_description::FormatItem;
@@ -14,7 +14,7 @@ const DATETIME_ENCODING: &[FormatItem<'_>] =
     format_description!(version = 2, "[year]-[month]-[day] [hour]:[minute]:[second]");
 
 pub struct SalesSqliteStorage {
-    connection: Pool,
+    connection: Client,
 }
 
 impl SalesSqliteStorage {
