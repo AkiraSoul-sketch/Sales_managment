@@ -1,0 +1,10 @@
+C:\Users\AKIRA\Documents\курсач\sales_management\target\debug\deps\unicase-ea2aeb52e404a913.d: C:\Users\AKIRA\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\lib.rs C:\Users\AKIRA\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\ascii.rs C:\Users\AKIRA\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\unicode\mod.rs C:\Users\AKIRA\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\unicode\map.rs
+
+C:\Users\AKIRA\Documents\курсач\sales_management\target\debug\deps\libunicase-ea2aeb52e404a913.rlib: C:\Users\AKIRA\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\lib.rs C:\Users\AKIRA\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\ascii.rs C:\Users\AKIRA\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\unicode\mod.rs C:\Users\AKIRA\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\unicode\map.rs
+
+C:\Users\AKIRA\Documents\курсач\sales_management\target\debug\deps\libunicase-ea2aeb52e404a913.rmeta: C:\Users\AKIRA\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\lib.rs C:\Users\AKIRA\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\ascii.rs C:\Users\AKIRA\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\unicode\mod.rs C:\Users\AKIRA\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\unicode\map.rs
+
+C:\Users\AKIRA\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\lib.rs:
+C:\Users\AKIRA\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\ascii.rs:
+C:\Users\AKIRA\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\unicode\mod.rs:
+C:\Users\AKIRA\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\unicode\map.rs:

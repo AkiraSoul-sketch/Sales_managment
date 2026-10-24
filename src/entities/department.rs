@@ -12,16 +12,11 @@ pub struct Department {
 
     pub(crate) created_at: UtcDateTime,
     pub(crate) updated_at: Option<UtcDateTime>,
+    pub(crate) finished_at: Option<UtcDateTime>,
     pub(crate) deleted_at: Option<UtcDateTime>,
 }
 
 impl Department {
-    /// Полный конструктор: все поля задаются явно.
-    /// Используется при чтении готовой записи из базы данных.
-    #[expect(
-        clippy::too_many_arguments,
-        reason = "конструктор повторяет состав таблицы department"
-    )]
     pub fn create(
         id: Uuid,
         name: String,
@@ -30,6 +25,7 @@ impl Department {
         volume: i32,
         created_at: UtcDateTime,
         updated_at: Option<UtcDateTime>,
+        finished_at: Option<UtcDateTime>,
         deleted_at: Option<UtcDateTime>,
     ) -> Self {
         Self {
@@ -39,6 +35,7 @@ impl Department {
             number,
             volume,
             created_at,
+            finished_at,
             updated_at,
             deleted_at,
         }
@@ -54,6 +51,7 @@ impl Department {
             number,
             volume,
             UtcDateTime::now(),
+            None,
             None,
             None,
         )
