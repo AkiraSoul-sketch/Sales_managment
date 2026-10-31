@@ -1,4 +1,4 @@
-use contracts_impl::ManagedConnectionPool;
+use contracts_impl::managed_connection_pool;
 use http::*;
 use ohkami::{Ohkami, Route, fang::Context};
 use std::sync::Arc;

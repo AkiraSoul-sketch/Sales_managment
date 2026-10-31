@@ -7,7 +7,9 @@
 mod department;
 mod product;
 mod sales;
+pub mod value_objects;
 
 pub use department::Department;
 pub use product::Product;
 pub use sales::Sales;
+pub use value_objects::*;

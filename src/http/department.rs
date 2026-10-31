@@ -1,4 +1,4 @@
-use crate::ManagedConnectionPool;
+use crate::contracts_impl::ManagedConnectionPool;
 use crate::entities::Department;
 use ohkami::{Json, Response, claw::Path, claw::Query, fang::Context};
 use serde::{Deserialize, Serialize};

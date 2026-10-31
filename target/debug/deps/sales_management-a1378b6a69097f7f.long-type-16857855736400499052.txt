@@ -1,0 +1,1 @@
+rusqlite::types::Value: std::convert::From<entities::value_objects::phone_number::PhoneNumber>
