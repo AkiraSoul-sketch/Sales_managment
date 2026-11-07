@@ -1,50 +1,85 @@
+// src/entities/product.rs
+use crate::entities::value_objects::{
+    EntityId, EntityIdError, Name, NameError, Price, PriceError, Quantity, QuantityError,
+    RecordLifetime, RecordLifetimeError,
+};
 use time::UtcDateTime;
-use uuid::Uuid;
 
-/// Товар, продаваемый подразделением.
 #[derive(Debug, Clone)]
 pub struct Product {
-    pub(crate) item_number: Uuid,
-    pub(crate) name: String,
-    pub(crate) unit: i32,
-    pub(crate) price: f32,
+    pub(crate) item_number: EntityId,
+    pub(crate) name: Name,
+    pub(crate) unit: Quantity,
+    pub(crate) price: Price,
+    pub(crate) record_lifetime: RecordLifetime,
+}
 
-    pub(crate) created_at: UtcDateTime,
-    pub(crate) updated_at: Option<UtcDateTime>,
-    pub(crate) deleted_at: Option<UtcDateTime>,
+#[derive(Debug)]
+pub enum ProductError {
+    IdError(EntityIdError),
+    NameError(NameError),
+    UnitError(QuantityError),
+    PriceError(PriceError),
+    RecordLifetimeError(RecordLifetimeError),
+}
+
+impl From<EntityIdError> for ProductError {
+    fn from(e: EntityIdError) -> Self {
+        Self::IdError(e)
+    }
+}
+impl From<NameError> for ProductError {
+    fn from(e: NameError) -> Self {
+        Self::NameError(e)
+    }
+}
+impl From<QuantityError> for ProductError {
+    fn from(e: QuantityError) -> Self {
+        Self::UnitError(e)
+    }
+}
+impl From<PriceError> for ProductError {
+    fn from(e: PriceError) -> Self {
+        Self::PriceError(e)
+    }
+}
+impl From<RecordLifetimeError> for ProductError {
+    fn from(e: RecordLifetimeError) -> Self {
+        Self::RecordLifetimeError(e)
+    }
 }
 
 impl Product {
     pub fn create(
-        item_number: Uuid,
-        name: String,
-        unit: i32,
-        price: f32,
-        created_at: UtcDateTime,
-        updated_at: Option<UtcDateTime>,
-        deleted_at: Option<UtcDateTime>,
+        item_number: EntityId,
+        name: Name,
+        unit: Quantity,
+        price: Price,
+        record_lifetime: RecordLifetime,
     ) -> Self {
         Self {
             item_number,
             name,
             unit,
             price,
-            created_at,
-            updated_at,
-            deleted_at,
+            record_lifetime,
         }
     }
 
-    /// Создаёт новый товар: артикул и время создания генерируются автоматически.
-    pub fn new(name: String, unit: i32, price: f32) -> Self {
-        Self::create(
-            Uuid::new_v4(),
+    pub fn new(name: String, unit: i32, price: f64) -> Result<Self, ProductError> {
+        let item_number = EntityId::new();
+        let name = Name::new(name)?;
+        let unit_qty = Quantity::new(unit)?;
+        let price_obj = Price::new(price)?;
+
+        let lifetime = RecordLifetime::create(UtcDateTime::now(), None, None, None)?;
+
+        Ok(Self::create(
+            item_number,
             name,
-            unit,
-            price,
-            UtcDateTime::now(),
-            None,
-            None,
-        )
+            unit_qty,
+            price_obj,
+            lifetime,
+        ))
     }
 }

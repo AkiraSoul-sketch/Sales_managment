@@ -1,32 +1,66 @@
+// src/entities/department.rs
+use crate::entities::value_objects::{
+    EntityId, EntityIdError, Name, NameError, PhoneNumber, PhoneNumberError, Quantity,
+    QuantityError, RecordLifetime, RecordLifetimeError,
+};
 use time::UtcDateTime;
-use uuid::Uuid;
 
-/// Подразделение торговой сети.
 #[derive(Debug, Clone)]
 pub struct Department {
-    pub(crate) id: Uuid,
-    pub(crate) name: String,
-    pub(crate) head_of_department: String,
-    pub(crate) number: i32,
-    pub(crate) volume: i32,
+    pub(crate) id: EntityId,
+    pub(crate) name: Name,
+    pub(crate) head_of_department: Name,
+    pub(crate) number: PhoneNumber,
+    pub(crate) volume: Quantity,
+    pub(crate) record_lifetime: RecordLifetime,
+}
 
-    pub(crate) created_at: UtcDateTime,
-    pub(crate) updated_at: Option<UtcDateTime>,
-    pub(crate) finished_at: Option<UtcDateTime>,
-    pub(crate) deleted_at: Option<UtcDateTime>,
+#[derive(Debug)]
+pub enum DepartmentError {
+    IdError(EntityIdError),
+    NameError(NameError),
+    HeadNameError(NameError),
+    PhoneNumberError(PhoneNumberError),
+    VolumeError(QuantityError),
+    RecordLifetimeError(RecordLifetimeError),
+}
+
+// Реализация From для удобного использования оператора ?
+impl From<EntityIdError> for DepartmentError {
+    fn from(err: EntityIdError) -> Self {
+        Self::IdError(err)
+    }
+}
+impl From<NameError> for DepartmentError {
+    fn from(err: NameError) -> Self {
+        Self::NameError(err)
+    }
+}
+impl From<PhoneNumberError> for DepartmentError {
+    fn from(err: PhoneNumberError) -> Self {
+        Self::PhoneNumberError(err)
+    }
+}
+impl From<QuantityError> for DepartmentError {
+    fn from(err: QuantityError) -> Self {
+        Self::VolumeError(err)
+    }
+}
+impl From<RecordLifetimeError> for DepartmentError {
+    fn from(err: RecordLifetimeError) -> Self {
+        Self::RecordLifetimeError(err)
+    }
 }
 
 impl Department {
+    /// Принимает уже проверенные объекты-значения
     pub fn create(
-        id: Uuid,
-        name: String,
-        head_of_department: String,
-        number: i32,
-        volume: i32,
-        created_at: UtcDateTime,
-        updated_at: Option<UtcDateTime>,
-        finished_at: Option<UtcDateTime>,
-        deleted_at: Option<UtcDateTime>,
+        id: EntityId,
+        name: Name,
+        head_of_department: Name,
+        number: PhoneNumber,
+        volume: Quantity,
+        record_lifetime: RecordLifetime,
     ) -> Self {
         Self {
             id,
@@ -34,26 +68,25 @@ impl Department {
             head_of_department,
             number,
             volume,
-            created_at,
-            finished_at,
-            updated_at,
-            deleted_at,
+            record_lifetime,
         }
     }
 
-    /// Создаёт новое подразделение: идентификатор и время создания
-    /// генерируются автоматически, отметок изменения и удаления нет.
-    pub fn new(name: String, head_of_department: String, number: i32, volume: i32) -> Self {
-        Self::create(
-            Uuid::new_v4(),
-            name,
-            head_of_department,
-            number,
-            volume,
-            UtcDateTime::now(),
-            None,
-            None,
-            None,
-        )
+    /// Удобный конструктор: принимает сырые данные, валидирует и создает
+    pub fn new(
+        name: String,
+        head_of_department: String,
+        number: String,
+        volume: i32,
+    ) -> Result<Self, DepartmentError> {
+        let id = EntityId::new();
+        let name = Name::new(name)?;
+        let head_name = Name::new(head_of_department)?;
+        let phone = PhoneNumber::new(number)?;
+        let vol = Quantity::new(volume)?;
+
+        let lifetime = RecordLifetime::create(UtcDateTime::now(), None, None, None)?;
+
+        Ok(Self::create(id, name, head_name, phone, vol, lifetime))
     }
 }
